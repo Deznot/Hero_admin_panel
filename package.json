@@ -16,7 +16,7 @@
     "react-redux": "^9.0.4",
     "react-scripts": "^5.0.1",
     "sass": "^1.43.2",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.1"
   },
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"npx json-server heroes.json --port 3001\"",

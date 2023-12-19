@@ -19,17 +19,37 @@
       "element": "water"
     },
     {
-      "id": "24a93cb6-55e3-46f4-bd8a-8049775dbf61",
-      "name": "qwe",
-      "description": "qwe",
-      "element": "water"
+      "id": "a97881c9-3499-4831-aa90-e2cac266f631",
+      "name": "earth panda",
+      "description": "push the rock",
+      "element": "earth"
     }
   ],
   "filters": [
-    "all",
-    "fire",
-    "water",
-    "wind",
-    "earth"
+    {
+      "name": "all",
+      "label": "Все",
+      "className": "btn-outline-dark"
+    },
+    {
+      "name": "fire",
+      "label": "Огонь",
+      "className": "btn-danger"
+    },
+    {
+      "name": "water",
+      "label": "Вода",
+      "className": "btn-primary"
+    },
+    {
+      "name": "wind",
+      "label": "Ветер",
+      "className": "btn-success"
+    },
+    {
+      "name": "earth",
+      "label": "Земля",
+      "className": "btn-secondary"
+    }
   ]
 }

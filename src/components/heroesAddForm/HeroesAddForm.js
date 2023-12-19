@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { heroAdd } from "../../actions";
 import { useHttp } from '../../hooks/http.hook';
+
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
 // в общее состояние и отображаться в списке + фильтроваться
@@ -22,6 +23,7 @@ const HeroesAddForm = () => {
 
     useEffect(() => {
         getFilterOptions()
+         // eslint-disable-next-line
     } ,[]);
 
     const onSubmitHandler = (e) => {
@@ -56,10 +58,9 @@ const HeroesAddForm = () => {
         if (dataForOptions && dataForOptions.length > 0 ) {
             options = dataForOptions.map((option,i) => {
                 // eslint-disable-next-line
-                if (option === 'all') return;
-                return <option key={i} value={option}>{option}</option>
+                if (option.name === 'all') return;
+                return <option key={i} value={option.name}>{option.label}</option>
             });
-            console.log(options);
         }
         return options;
     }

@@ -55,9 +55,3 @@ export const setActiveFilter = (name) => {
         payload: name
     }
 }
-
-export const applyFilter = () => {
-    return {
-        type: 'FILTERS_APPLY',
-    }
-}

@@ -25,10 +25,16 @@
       "element": "earth"
     },
     {
-      "id": "85db7409-bfa3-4d85-925f-60091d75ac84",
-      "name": "firebolik",
-      "description": "push the fire ball",
+      "id": "c7575ad8-4141-4107-aa9c-879f40e0910b",
+      "name": "Diabolik",
+      "description": "revange",
       "element": "fire"
+    },
+    {
+      "id": "1e96669f-74f3-4bf4-976c-055fcc667d0e",
+      "name": "avatar aang",
+      "description": "avatar of god",
+      "element": "wind"
     }
   ],
   "filters": [

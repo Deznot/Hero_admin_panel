@@ -23,6 +23,12 @@
       "name": "earth panda",
       "description": "push the rock",
       "element": "earth"
+    },
+    {
+      "id": "85db7409-bfa3-4d85-925f-60091d75ac84",
+      "name": "firebolik",
+      "description": "push the fire ball",
+      "element": "fire"
     }
   ],
   "filters": [

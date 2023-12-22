@@ -1,4 +1,5 @@
 import {heroesFetching, heroesFetched, heroesFetchingError } from "../components/heroesList/heroesSlice";
+import { filtersFetching,filtersFetched, filtersFetchingError } from "../components/heroesFilters/filtersSlice";
 
 export const fetchFilters = (request) => (dispatch) => {
     dispatch(filtersFetching());
@@ -16,37 +17,3 @@ export const fetchHeroes = (request) => (dispatch) => {
         .then(data => dispatch(heroesFetched(data)))
         .catch(() => dispatch(heroesFetchingError()))
 }
-
-export const filtersFetching = () => {
-    return {
-        type: 'FILTERS_FETCHING',
-    }
-}
-export const filtersFetched = (filters) => {
-    return {
-        type: 'FILTERS_FETCHED',
-        payload: filters
-    }
-}
-
-export const filtersFetchingError = () => {
-    return {
-        type: 'FILTERS_FETCHING_ERROR'
-    }
-}
-
-export const setActiveFilter = (name) => {
-    return {
-        type: 'FILTERS_SET_ACTIVE',
-        payload: name
-    }
-}
-
-// export const setActiveFilterWithTimeout = (name) => (dispatch) => {
-//     setTimeout(() => {
-//         dispatch({
-//             type: 'FILTERS_SET_ACTIVE',
-//             payload: name
-//         })
-//     }, 1000);
-// }

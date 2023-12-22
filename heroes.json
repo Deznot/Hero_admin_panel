@@ -23,12 +23,6 @@
       "name": "earth panda",
       "description": "push the rock",
       "element": "earth"
-    },
-    {
-      "id": "c7575ad8-4141-4107-aa9c-879f40e0910b",
-      "name": "Diabolik",
-      "description": "revange",
-      "element": "fire"
     }
   ],
   "filters": [

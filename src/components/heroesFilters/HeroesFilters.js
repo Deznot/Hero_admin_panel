@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHttp } from "../../hooks/http.hook";
-import {fetchFilters, setActiveFilter} from "../../actions";
+import {fetchFilters} from "../../actions";
+import {filtersSetActive} from "./filtersSlice";
 import Spinner from "../spinner/Spinner";
 import classNames from "classnames";
 
@@ -30,7 +31,7 @@ const HeroesFilters = () => {
                             "active": filter.name === activeFilter
                         })}
                         onClick={() => {
-                            dispatch(setActiveFilter(filter.name))
+                            dispatch(filtersSetActive(filter.name))
                         }}
                     >{filter.label}
                     </button>

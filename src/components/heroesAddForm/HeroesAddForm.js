@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { heroesAdd } from "../../components/heroesList/heroesSlice";
 import { useHttp } from '../../hooks/http.hook';
+import { selectAll } from '../heroesFilters/filtersSlice';
+import store from "../../store";
 
 const HeroesAddForm = () => {
     const dispatch = useDispatch();
@@ -10,12 +12,8 @@ const HeroesAddForm = () => {
     const [name,setName] = useState("");
     const [description, setDescription] = useState("");
     const [element,setElement] = useState("");
-    const [filters, setFilters] = useState([]);
-
-    useEffect(() => {
-        getFilterOptions()
-         // eslint-disable-next-line
-    } ,[]);
+    const filters = selectAll(store.getState());
+    const {filtersLoadingStatus} = useSelector(state => state.filters);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -38,19 +36,18 @@ const HeroesAddForm = () => {
 
     }
 
-    const getFilterOptions = () => {
-        request(`http://localhost:3001/filters`)
-        .then((data) => setFilters(data))
-        .catch(err => console.log(err));
-    }
-
-    const createFilterOptions = (dataForOptions) => {
+    const createFilterOptions = (dataForOptions, status) => {
+        if (status === "loading") {
+            return <option>Загрузка элементов</option>
+        } else if (status === "error") {
+            return <option>Ошибка загрузки</option>
+        }
         let options;
         if (dataForOptions && dataForOptions.length > 0 ) {
-            options = dataForOptions.map((option,i) => {
+            options = dataForOptions.map((option) => {
                 // eslint-disable-next-line
                 if (option.name === 'all') return;
-                return <option key={i} value={option.name}>{option.label}</option>
+                return <option key={option.id} value={option.name}>{option.label}</option>
             });
         }
         return options;
@@ -109,7 +106,7 @@ const HeroesAddForm = () => {
                     onChange={onChangeElement}
                     >
                     <option >Я владею элементом...</option>
-                    {createFilterOptions(filters)}
+                    {createFilterOptions(filters,filtersLoadingStatus)}
                 </select>
             </div>
 

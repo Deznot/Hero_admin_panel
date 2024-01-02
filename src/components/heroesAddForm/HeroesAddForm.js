@@ -5,6 +5,7 @@ import { heroesAdd } from "../../components/heroesList/heroesSlice";
 import { useHttp } from '../../hooks/http.hook';
 import { selectAll } from '../heroesFilters/filtersSlice';
 import store from "../../store";
+import { useCreateHeroesMutation } from '../api/apiSlice';
 
 const HeroesAddForm = () => {
     const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const HeroesAddForm = () => {
     const [element,setElement] = useState("");
     const filters = selectAll(store.getState());
     const {filtersLoadingStatus} = useSelector(state => state.filters);
-
+    const [createHeroes, {isLoading}] = useCreateHeroesMutation();
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
@@ -25,10 +26,12 @@ const HeroesAddForm = () => {
             element,
         }
 
-        request(`http://localhost:3001/heroes`, "POST", JSON.stringify(hero))
-        .then((data) => console.log(data))
-        .then(() => dispatch(heroesAdd(hero)))
-        .catch((error) => console.error(new Error('add hero error' + error)))
+        createHeroes(hero).unwrap();
+
+        // request(`http://localhost:3001/heroes`, "POST", JSON.stringify(hero))
+        // .then((data) => console.log(data))
+        // .then(() => dispatch(heroesAdd(hero)))
+        // .catch((error) => console.error(new Error('add hero error' + error)))
 
         setName('');
         setDescription('');

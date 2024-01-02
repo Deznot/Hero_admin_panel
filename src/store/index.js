@@ -1,3 +1,4 @@
+import { apiSlice } from "../components/api/apiSlice";
 import filters from "../components/heroesFilters/filtersSlice";
 import heroes from "../components/heroesList/heroesSlice";
 import { configureStore } from '@reduxjs/toolkit';
@@ -41,8 +42,8 @@ const enhancer = (createStore) => (...args) => {
 // middleware: getDefaultMiddleware => new Tuple(additionalMiddleware, logger),
 
 const store = configureStore({
-    reducer: {heroes,filters},
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(stringMiddleware),
+    reducer: {heroes,filters, [apiSlice.reducerPath] : apiSlice.reducer},
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(stringMiddleware, apiSlice.middleware),
     devTools: process.env.NODE_ENV !== 'production',
     
 });
